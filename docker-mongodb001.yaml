@@ -1,0 +1,34 @@
+# docker-mongodb001
+
+#****************************************
+# Creating Network for containers
+# docker network create mongo-nw001
+# docker network ls
+
+#****************************************
+#Creating mongo container and attached network
+
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  mongodb001:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+
+###### run command in below for creating mongo db container
+# docker compose -f .\docker-mongodb001.yaml up
+
+###### run command in below for removing mongo db container
+# docker compose -f .\docker-mongodb001.yaml down
+
+
+
+
+
