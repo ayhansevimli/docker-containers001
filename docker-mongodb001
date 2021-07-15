@@ -1,0 +1,31 @@
+# docker-mongodb001
+
+****************************************
+Creating Network for containers
+docker network create mongo-nw001
+docker network ls
+
+****************************************
+Creating mongo container and attached network
+docker run -d --network mongo-nw001 --name mongodb001 -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=secret mongo
+docker logs mongodb001 -f
+
+docker run -d \
+--network mongo-nw001 \
+--name mongodb001 \
+-p 27017:27017 \
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin \
+-e MONGO_INITDB_ROOT_PASSWORD=secret \
+mongo
+docker logs mongodb001 -f
+
+##windows cmd/powershell 
+docker run -d `
+--network mongo-nw001 `
+--name mongodb001 `
+-p 27017:27017 `
+-e MONGO_INITDB_ROOT_USERNAME=mongoadmin `
+-e MONGO_INITDB_ROOT_PASSWORD=secret `
+mongo
+docker logs mongodb001 -f
+
